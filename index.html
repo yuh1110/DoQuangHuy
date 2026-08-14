@@ -1,147 +1,49 @@
 <!DOCTYPE html>
-<html>
+<html lang="vi">
 <head>
-	<title> Hồ Cá CSS3</title>
-	<meta charset="utf-8">
-	<style>
-#shark
-{
-	left:100px; top:400px;
-	width: 200px; height: 147px;
-	position: absolute;
-	-webkit-animation-name: Shark;
-	-webkit-animation-duration: 10s;
-	-webkit-animation-timing-function: linear;
-	-webkit-animation-iteration-count: infinite;
-	-webkit-animation-play-state: running;	
-	-webkit-transform:scaleX(1)
-}
-@-webkit-keyframes Shark
-{
-	0%   {left:100px; top:400px;}
-	1%   {left:100px; top:400px;}
-	20%  {left:700px; top:400px;}
-	40%  {left:700px; -webkit-transform:scaleX(-1);}
-	60%  {left:700px; top:100px; -webkit-transform:scaleX(-1);}
-	90%  {left:500px; top:100px; -webkit-transform:scaleX(-1);}
-	100% {left:500px; top:400px; -webkit-transform:scaleX(-1);}
-}
-
-/* NỀN HỒ */
-html, body {
-	margin: 0;
-	background: #04121f;
-}
-#background {
-	position: relative;
-	width: 940px;
-	height: 580px;
-	margin: 40px auto;
-	border: 16px solid #2e4a5e;
-	border-radius: 24px;
-	overflow: hidden;
-	background: linear-gradient(180deg, #b5ecff, #2a86b8 60%, #14506e);
-	box-shadow: 0 25px 60px rgba(0,0,0,.7);
-}
-
-/*  CÁT ĐÁY */
-.sand {
-	position: absolute;
-	left: 0; right: 0; bottom: 0;
-	height: 95px;
-	background: linear-gradient(180deg, #ecd29a, #a87c38);
-	z-index: 1;
-}
-
-/* ĐÁ  */
-.rock {
-	position: absolute;
-	bottom: 80px;
-	border-radius: 50% 50% 0 0 / 65% 65% 0 0;
-	background: radial-gradient(circle at 30% 30%, #93a893, #3a4a3a);
-	z-index: 2;
-}
-.rock.r1 { left: 45px;  width: 140px; height: 120px; }
-.rock.r2 { left: 735px; width: 160px; height: 140px; }
-
-/*  RONG BIỂN  */
-.seaweed {
-	position: absolute;
-	bottom: 85px;
-	width: 16px;
-	height: 170px;
-	background: linear-gradient(180deg, #3fbf5a, #155f28);
-	transform-origin: bottom center;
-	z-index: 2;
-	animation: sway 4s ease-in-out infinite alternate;
-}
-.seaweed.s1 { left: 130px; }
-.seaweed.s2 { left: 195px; height: 210px; animation-duration: 5s; }
-.seaweed.s3 { left: 775px; height: 150px; }
-.seaweed.s4 { left: 830px; height: 195px; animation-duration: 4.6s; }
-@keyframes sway {
-	from { transform: rotate(-14deg); }
-	to   { transform: rotate(14deg); }
-}
-
-/* 	 BONG BÓNG 	 */
-.bubble {
-	position: absolute;
-	bottom: -50px;
-	border-radius: 50%;
-	border: 2px solid rgba(255,255,255,.65);
-	background: radial-gradient(circle at 35% 35%, rgba(255,255,255,.95), rgba(255,255,255,.15));
-	z-index: 6;
-	animation: rise 6s linear infinite;
-}
-.bubble.b1 { left: 160px; width: 16px; height: 16px; }
-.bubble.b2 { left: 280px; width: 10px; height: 10px; animation-duration: 7s; animation-delay: -2s; }
-.bubble.b3 { left: 420px; width: 20px; height: 20px; animation-duration: 8s; animation-delay: -4s; }
-.bubble.b4 { left: 560px; width: 12px; height: 12px; animation-duration: 6.5s; animation-delay: -1s; }
-.bubble.b5 { left: 670px; width: 18px; height: 18px; animation-duration: 9s; animation-delay: -5s; }
-@keyframes rise {
-	0%   { transform: translateY(0) scale(1); opacity: 0; }
-	10%  { opacity: .9; }
-	100% { transform: translateY(-640px) scale(1.5); opacity: 0; }
-}
-
-/* CÁ MẬP */
-#shark {
-	z-index: 5;
-}
-	</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Virtual Aquarium - Bể Cá Nghệ Thuật Đa Dạng Sinh Thái</title>
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
 
-<div id="background">
+  <div class="aquarium-container" id="aquarium">
+    <!-- Canvas Đồ họa Chính -->
+    <canvas id="aquariumCanvas"></canvas>
 
-	<!-- Ánh sáng -->
-	<div class="light"></div>
-	<div class="light l2"></div>
+    <!-- Thanh Điều Khiển Floating UI Minimalist -->
+    <div class="control-panel">
+      <div class="panel-group">
+        <span class="panel-label">🏞️ Nền:</span>
+        <select id="bgSelect">
+          <option value="deepOcean">1. Đại Dương Sâu (Deep Ocean)</option>
+          <option value="tropicalReef">2. Rạn San Hô Nhiệt Đới</option>
+          <option value="midnightGlow">3. Dạ Quang Ban Đêm</option>
+          <option value="sunlitShallow">4. Vùng Nước Nông Nắng Ấm</option>
+        </select>
+      </div>
 
-	<!-- Cát -->
-	<div class="sand"></div>
+      <div class="panel-group">
+        <span class="panel-label">🔊 Âm thanh:</span>
+        <select id="soundSelect">
+          <option value="mute">🔇 Tắt Âm Thanh</option>
+          <option value="deepWater">1. Bọt Nước Sâu (Ambient Deep)</option>
+          <option value="oceanWaves">2. Sóng Biển Rì Rào (Waves)</option>
+          <option value="zenMelody">3. Điệu Nhạc Zen Thư Giãn</option>
+        </select>
+      </div>
 
-	<!-- Đá -->
-	<div class="rock r1"></div>
-	<div class="rock r2"></div>
+      <div class="panel-group">
+        <span class="panel-label">🌆 Chế độ:</span>
+        <button id="dayNightBtn">🌙 Chuyển Chế Độ Đêm</button>
+      </div>
 
-	<!-- Rong biển -->
-	<div class="seaweed s1"></div>
-	<div class="seaweed s2"></div>
-	<div class="seaweed s3"></div>
-	<div class="seaweed s4"></div>
+      <button id="feedBtn">🍬 Thả Thức Ăn</button>
+    </div>
+  </div>
 
-	<!-- Bong bóng -->
-	<div class="bubble b1"></div>
-	<div class="bubble b2"></div>
-	<div class="bubble b3"></div>
-	<div class="bubble b4"></div>
-	<div class="bubble b5"></div>
-
-    <div id="shark"><img src="https://png.pngtree.com/png-clipart/20240627/original/pngtree-baby-shark-illustration-on-white-background-png-image_15422539.png"; width="298" height="149"></div>
-</div>
-
+  <!-- Nạp Mã Nguồn Module ES6 -->
+  <script type="module" src="js/main.js"></script>
 </body>
 </html>
-

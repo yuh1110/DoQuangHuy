@@ -1,0 +1,97 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #020617;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Khung Bể Cá Glassmorphism Premium Frame */
+.aquarium-container {
+  position: relative;
+  width: 96vw;
+  height: 92vh;
+  border-radius: 24px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9),
+              inset 0 0 40px rgba(255, 255, 255, 0.12);
+  border: 2px solid rgba(255, 255, 255, 0.18);
+  overflow: hidden;
+  transition: background 1.5s ease-in-out, filter 1s ease-in-out;
+}
+
+/* Con Trỏ Chuột Bàn Tay Thả Thức Ăn Tùy Biến (Custom SVG Cursor) */
+canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24' fill='%23fde047'><path d='M9 11.24V7.5a1.5 1.5 0 0 1 3 0v3.74a3 3 0 0 1 2-2.82V6.5a1.5 1.5 0 0 1 3 0v3.74a3 3 0 0 1 2-2.82V8.5a1.5 1.5 0 0 1 3 0V14a8 8 0 0 1-8 8h-2a8 8 0 0 1-8-8V11.5a1.5 1.5 0 0 1 3 0v1.74a3 3 0 0 1 2-2z'/></svg>") 12 12, pointer;
+}
+
+/* Thanh UI Điều Khiển Nổi Minimalist */
+.control-panel {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  gap: 18px;
+  background: rgba(10, 25, 47, 0.55);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  padding: 10px 24px;
+  border-radius: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  align-items: center;
+}
+
+.panel-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.panel-label {
+  color: #38bdf8;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+select, button {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 8px 14px;
+  border-radius: 18px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+select:hover, button:hover {
+  background: rgba(56, 189, 248, 0.25);
+  border-color: #38bdf8;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(56, 189, 248, 0.3);
+}
+
+select option {
+  background: #0f172a;
+  color: #fff;
+}
